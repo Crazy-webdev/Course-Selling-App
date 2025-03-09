@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/controllers/course.controller.ts","./src/controllers/user.controller.ts","./src/routes/course.routes.ts","./src/routes/user.routes.ts"],"version":"5.6.2"}
+{"root":["./src/index.ts","./src/controllers/admin.controllers.ts","./src/controllers/course.controller.ts","./src/controllers/user.controller.ts","./src/models/admin.models.ts","./src/models/courses.models.ts","./src/models/purchase.models.ts","./src/models/user.models.ts","./src/routes/admin.routes.ts","./src/routes/course.routes.ts","./src/routes/user.routes.ts"],"version":"5.6.2"}
