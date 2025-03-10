@@ -27,6 +27,6 @@ const adminSchema = new Schema<IAdmin>({
   },
 });
 
-const AdminModel = model<IAdmin>('Admin', adminSchema);
+const AdminModel = model<IAdmin>('admin', adminSchema);
 
 export default AdminModel;

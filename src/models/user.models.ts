@@ -27,6 +27,6 @@ const userSchema = new Schema<IUser>({
   },
 });
 
-const UserModel = model<IUser>('User', userSchema);
+const UserModel = model<IUser>('user', userSchema);
 
 export default UserModel;

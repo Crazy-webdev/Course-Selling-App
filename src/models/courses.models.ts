@@ -32,6 +32,6 @@ const courseSchema = new Schema<ICourse>({
   },
 });
 
-const CourseModel = model<ICourse>('Course', courseSchema);
+const CourseModel = model<ICourse>('course', courseSchema);
 
 export default CourseModel;

@@ -18,6 +18,6 @@ const purchaseSchema = new Schema<IPurchase>({
   },
 });
 
-const PurchaseModel = model<IPurchase>('Purchase', purchaseSchema);
+const PurchaseModel = model<IPurchase>('purchase', purchaseSchema);
 
 export default PurchaseModel;
