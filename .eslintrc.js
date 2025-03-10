@@ -28,7 +28,8 @@ module.exports = {
     'space-in-parens': ['error', 'never'],
     'space-infix-ops': 'error',
     'keyword-spacing': 'error',
-    'object-curly-spacing': ['error', 'always']
+    'object-curly-spacing': ['error', 'always'],
+    'quotes': ['error', 'single']
   },
   ignorePatterns: ['node_modules', 'dist']
 };

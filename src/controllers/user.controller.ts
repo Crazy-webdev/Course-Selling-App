@@ -1,23 +1,23 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
 const signup = (req: Request, res: Response) => {
-  res.send("signup");
+  res.send('signup');
 };
 
 const signin = (req: Request, res: Response) => {
-  res.json({ msg: "signin" });
+  res.json({ msg: 'signin' });
 };
 
 const purchases = (req: Request, res: Response) => {
-  res.send("purchases");
+  res.send('purchases');
 };
 
 const makePurchase = (req: Request, res: Response) => {
-  res.send("makePurchase");
+  res.send('makePurchase');
 };
 
 const courses = (req: Request, res: Response) => {
-  res.send("courses");
+  res.send('courses');
 };
 
 export { signup, signin, purchases, makePurchase, courses };
