@@ -1,4 +1,4 @@
-import { Document, model, Schema } from "mongoose";
+import { Document, model, Schema } from 'mongoose';
 
 interface IAdmin extends Document {
   email: string;
@@ -27,6 +27,6 @@ const adminSchema = new Schema<IAdmin>({
   },
 });
 
-const AdminModel = model<IAdmin>("Admin", adminSchema);
+const AdminModel = model<IAdmin>('Admin', adminSchema);
 
 export default AdminModel;

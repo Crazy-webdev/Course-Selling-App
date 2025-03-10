@@ -1,4 +1,4 @@
-import { Schema, model, Document, Types } from "mongoose";
+import { Schema, model, Document, Types } from 'mongoose';
 
 interface IPurchase extends Document {
   userId: Types.ObjectId;
@@ -9,15 +9,15 @@ const purchaseSchema = new Schema<IPurchase>({
   userId: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: "User",
+    ref: 'User',
   },
   courseId: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: "Course",
+    ref: 'Course',
   },
 });
 
-const PurchaseModel = model<IPurchase>("Purchase", purchaseSchema);
+const PurchaseModel = model<IPurchase>('Purchase', purchaseSchema);
 
 export default PurchaseModel;

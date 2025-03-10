@@ -1,4 +1,4 @@
-import { Document, model, Schema, Types } from "mongoose";
+import { Document, model, Schema, Types } from 'mongoose';
 
 interface ICourse extends Document {
   title: string;
@@ -28,10 +28,10 @@ const courseSchema = new Schema<ICourse>({
   creatorId: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: "Admin",
+    ref: 'Admin',
   },
 });
 
-const CourseModel = model<ICourse>("Course", courseSchema);
+const CourseModel = model<ICourse>('Course', courseSchema);
 
 export default CourseModel;
