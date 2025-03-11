@@ -16,8 +16,5 @@ const makePurchase = (req: Request, res: Response) => {
   res.send('makePurchase');
 };
 
-const courses = (req: Request, res: Response) => {
-  res.send('courses');
-};
 
-export { signup, signin, purchases, makePurchase, courses };
+export { signup, signin, purchases, makePurchase };

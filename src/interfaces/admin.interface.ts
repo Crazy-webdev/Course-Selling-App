@@ -9,7 +9,14 @@ export interface AdminSigninInput {
   email: string;
   password: string;
 }
-export interface CourseInput {
+export interface CourseDTO {
+  title: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+}
+
+export interface ICourse{
   title: string;
   description: string;
   price: number;

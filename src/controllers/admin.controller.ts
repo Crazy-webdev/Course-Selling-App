@@ -43,16 +43,9 @@ const allCourses = asyncHandler(
     }
 
     const result = await adminService.allCourses(creatorId);
-    const mappedResult = result.map((course) => ({
-      title: course.title,
-      description: course.description,
-      price: course.price,
-      imageUrl: course.imageUrl,
-    }));
-
     res.status(200).json({
       status: 'success',
-      data: mappedResult,
+      data: result,
     });
   }
 );
