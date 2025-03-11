@@ -8,6 +8,12 @@ export const errorHandler = (
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction
 ) => {
+  if (err.name === "JsonWebTokenError" || err.name === "TokenExpiredError") {
+    return res.status(401).json({
+      status: "fail",
+      message: "Invalid or expired token",
+    });
+  }
   const statusCode = err.statusCode || 500;
 
   res.status(statusCode).json({

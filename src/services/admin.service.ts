@@ -47,12 +47,13 @@ export class AdminService {
     return { token };
   }
 
-  async createCourse(data: CourseInput): Promise<void> {
+  async createCourse(data: CourseInput,authHeader:string): Promise<void> {
     const { title } = data;
     const isSameTitle = await CourseModel.findOne({ title });
     if (isSameTitle) {
       throw new Error('Another Course has the same title');
     }
+    
     const course = await CourseModel.create({
       ...data,
     });

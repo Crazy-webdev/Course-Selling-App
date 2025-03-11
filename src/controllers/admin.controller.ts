@@ -13,17 +13,18 @@ const adminSignup = asyncHandler(
 
 const adminSignin = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
-    const result = await adminService.signin(req.body);
+    const { token } = await adminService.signin(req.body);
+    res.setHeader('Authorization', `Bearer ${token}`);
     res.status(200).json({
       status: 'success',
-      data: result,
     });
   }
 );
 
 const adminCourse = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
-    const result = await adminService.createCourse(req.body);
+    const authHeader = req.headers['authorization'] || '';
+    const result = await adminService.createCourse(req.body,authHeader);
     res.status(201).json({
       status: 'success',
       data: result,
@@ -36,8 +37,8 @@ const allCourses = asyncHandler(
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
       res.status(401).json({
-        status:'fail',
-        message:'Authorization header is missing',
+        status: 'fail',
+        message: 'Authorization header is missing',
       });
       return;
     }

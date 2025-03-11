@@ -29,7 +29,7 @@ module.exports = {
     'space-infix-ops': 'error',
     'keyword-spacing': 'error',
     'object-curly-spacing': ['error', 'always'],
-    'quotes': ['error', 'single']
+    'quotes': ['error', 'single',{ 'avoidEscape':true, 'allowTemplateLiterals': true}],
   },
   ignorePatterns: ['node_modules', 'dist']
 };
