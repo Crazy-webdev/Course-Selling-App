@@ -7,25 +7,30 @@ interface IUser extends Document {
   lastName: string;
 }
 
-const userSchema = new Schema<IUser>({
-  email: {
-    type: String,
-    unique: true,
-    required: true,
+const userSchema = new Schema<IUser>(
+  {
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
-    type: String,
-    required: true,
-  },
-});
+  {
+    versionKey: false,
+  }
+);
 
 const UserModel = model<IUser>('user', userSchema);
 

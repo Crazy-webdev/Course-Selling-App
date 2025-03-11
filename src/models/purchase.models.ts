@@ -5,18 +5,23 @@ interface IPurchase extends Document {
   courseId: Types.ObjectId;
 }
 
-const purchaseSchema = new Schema<IPurchase>({
-  userId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: 'User',
+const purchaseSchema = new Schema<IPurchase>(
+  {
+    userId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
+    courseId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'Course',
+    },
   },
-  courseId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: 'Course',
-  },
-});
+  {
+    versionKey: false,
+  }
+);
 
 const PurchaseModel = model<IPurchase>('purchase', purchaseSchema);
 

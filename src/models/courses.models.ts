@@ -8,29 +8,34 @@ interface ICourse extends Document {
   creatorId: Types.ObjectId;
 }
 
-const courseSchema = new Schema<ICourse>({
-  title: {
-    type: String,
-    required: true,
+const courseSchema = new Schema<ICourse>(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    imageUrl: {
+      type: String,
+      required: true,
+    },
+    creatorId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'Admin',
+    },
   },
-  description: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  imageUrl: {
-    type: String,
-    required: true,
-  },
-  creatorId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: 'Admin',
-  },
-});
+  {
+    versionKey: false,
+  }
+);
 
 const CourseModel = model<ICourse>('course', courseSchema);
 

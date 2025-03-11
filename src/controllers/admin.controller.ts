@@ -23,8 +23,11 @@ const adminSignin = asyncHandler(
 
 const adminCourse = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
-    const authHeader = req.headers['authorization'] || '';
-    const result = await adminService.createCourse(req.body,authHeader);
+    const creatorId = req?.user?._id;
+    if (!creatorId) {
+      throw new Error('Trouble getting userId');
+    }
+    const result = await adminService.createCourse(req.body, creatorId);
     res.status(201).json({
       status: 'success',
       data: result,
@@ -34,18 +37,22 @@ const adminCourse = asyncHandler(
 
 const allCourses = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
-    const authHeader = req.headers['authorization'];
-    if (!authHeader) {
-      res.status(401).json({
-        status: 'fail',
-        message: 'Authorization header is missing',
-      });
-      return;
+    const creatorId = req?.user?._id;
+    if (!creatorId) {
+      throw new Error('Trouble getting userId');
     }
-    const result = await adminService.allCourses(authHeader);
+
+    const result = await adminService.allCourses(creatorId);
+    const mappedResult = result.map((course) => ({
+      title: course.title,
+      description: course.description,
+      price: course.price,
+      imageUrl: course.imageUrl,
+    }));
+
     res.status(200).json({
       status: 'success',
-      data: result,
+      data: mappedResult,
     });
   }
 );

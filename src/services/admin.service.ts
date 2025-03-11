@@ -47,15 +47,16 @@ export class AdminService {
     return { token };
   }
 
-  async createCourse(data: CourseInput,authHeader:string): Promise<void> {
+  async createCourse(data: CourseInput,creatorId:string): Promise<void> {
     const { title } = data;
     const isSameTitle = await CourseModel.findOne({ title });
     if (isSameTitle) {
       throw new Error('Another Course has the same title');
     }
-    
+
     const course = await CourseModel.create({
       ...data,
+      creatorId
     });
     if (!course) {
       throw new Error('Error while creating the course. Please try again');
@@ -63,14 +64,11 @@ export class AdminService {
     return;
   }
 
-  async allCourses(data: string) {
-    const creatorId = jwt.decode(data);
-    console.log(creatorId);
+  async allCourses(creatorId: string) {
     const getCourses = await CourseModel.find({ creatorId });
     if (!getCourses) {
       throw new Error('Error while getting courses. Please try again');
     }
-    console.log(creatorId);
     return getCourses;
   }
 }

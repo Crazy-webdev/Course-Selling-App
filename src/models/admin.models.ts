@@ -7,25 +7,30 @@ interface IAdmin extends Document {
   lastName: string;
 }
 
-const adminSchema = new Schema<IAdmin>({
-  email: {
-    type: String,
-    unique: true,
-    required: true,
+const adminSchema = new Schema<IAdmin>(
+  {
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
-    type: String,
-    required: true,
-  },
-});
+  {
+    versionKey: false,
+  }
+);
 
 const AdminModel = model<IAdmin>('admin', adminSchema);
 
