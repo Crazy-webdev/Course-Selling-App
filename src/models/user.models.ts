@@ -31,7 +31,6 @@ const userSchema = new Schema<IUser>(
     versionKey: false,
   }
 );
-
 const UserModel = model<IUser>('user', userSchema);
 
 export default UserModel;

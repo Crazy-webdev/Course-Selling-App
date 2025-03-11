@@ -36,7 +36,6 @@ const courseSchema = new Schema<ICourse>(
     versionKey: false,
   }
 );
-
 const CourseModel = model<ICourse>('course', courseSchema);
 
 export default CourseModel;

@@ -11,13 +11,16 @@ import {
   adminSignupSchema,
   courseSchema,
 } from '../schemas/admin.schema';
-import { authenticateAdmin } from '../middleware/admin.middleware';
+import { authenticate } from '../middleware/admin.middleware';
 
 const adminRouter = express.Router();
 
 adminRouter.post('/signup', validate(adminSignupSchema), adminSignup);
+
 adminRouter.post('/signin', validate(adminSigninSchema), adminSignin);
-adminRouter.post('/course', validate(courseSchema),authenticateAdmin, adminCourse);
-adminRouter.get('/courses/bulk',authenticateAdmin, allCourses);
+
+adminRouter.post('/course', validate(courseSchema),authenticate, adminCourse);
+
+adminRouter.get('/courses/bulk',authenticate, allCourses);
 
 export default adminRouter;

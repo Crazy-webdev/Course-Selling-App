@@ -31,7 +31,6 @@ const adminSchema = new Schema<IAdmin>(
     versionKey: false,
   }
 );
-
 const AdminModel = model<IAdmin>('admin', adminSchema);
 
 export default AdminModel;

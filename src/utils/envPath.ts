@@ -4,6 +4,7 @@ import fs from 'fs';
 
 export const envPath = () => {
   const envPathResolve = path.resolve(__dirname, '../../.env');
+
   if (fs.existsSync(envPathResolve)) {
     dotenv.config({ path: envPathResolve });
   } else {

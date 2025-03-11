@@ -22,7 +22,6 @@ const purchaseSchema = new Schema<IPurchase>(
     versionKey: false,
   }
 );
-
 const PurchaseModel = model<IPurchase>('purchase', purchaseSchema);
 
 export default PurchaseModel;
