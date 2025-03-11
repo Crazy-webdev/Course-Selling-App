@@ -8,7 +8,7 @@ const userRouter = express.Router();
 
 userRouter.post('/signup',validate(userSignupSchema), signup);
 
-userRouter.get('/signin',validate(userSigninSchema), signin);
+userRouter.post('/signin',validate(userSigninSchema), signin);
 
 userRouter.post('/purchase/:courseId',authenticate, makePurchase);
 

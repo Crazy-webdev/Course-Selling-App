@@ -1,4 +1,6 @@
-import { PurchasedCourses, UserSigninInput, UserSignupInput } from '../interfaces/user.interface';
+import { ICourse } from '../interfaces/admin.interface';
+import { UserSigninInput, UserSignupInput } from '../interfaces/user.interface';
+import CourseModel from '../models/courses.models';
 import PurchaseModel from '../models/purchase.models';
 import UserModel from '../models/user.models';
 import { comparePassword, encryptPassword } from '../utils/password.util';
@@ -52,24 +54,36 @@ export class UserService {
   }
 
   async purchaseCourse(userId: string, courseId: string): Promise<void> {
-    const isPurchased = await PurchaseModel.findOne({});
+    const isPurchased = await PurchaseModel.findOne({ courseId });
 
     if (isPurchased) {
       throw new Error('Course is already purchased');
     }
-    await PurchaseModel.create(userId, courseId);
+
+    await PurchaseModel.create({
+      userId,
+      courseId
+    });
     return;
   }
 
-  async purchasedCourses(userId: string): Promise<PurchasedCourses[]> {
+  async purchasedCourses(userId: string): Promise<ICourse[]> {
     const getCourses = await PurchaseModel.find({ userId });
 
     if (!getCourses.length || !getCourses) {
       return [];
     }
-    console.log(`getCourses`,getCourses);
 
-    return getCourses;
+    const courseIds = getCourses.map(record=>record.courseId);
+    const courses = await CourseModel.find({ _id:{ $in:courseIds } });
+    const mappedCourses = courses.map(course => ({
+      title:course.title,
+      description:course.description,
+      price:course.price,
+      imageUrl:course.imageUrl
+    }))
+
+    return mappedCourses;
   }
 }
 

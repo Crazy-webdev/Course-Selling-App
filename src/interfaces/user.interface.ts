@@ -1,4 +1,3 @@
-import { Types } from 'mongoose';
 
 export interface UserSignupInput {
   email: string;
@@ -12,7 +11,3 @@ export interface UserSigninInput {
   password: string;
 }
 
-export interface PurchasedCourses {
-  userId: Types.ObjectId;
-  courseId: Types.ObjectId;
-}

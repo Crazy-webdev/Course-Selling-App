@@ -24,6 +24,7 @@ const signin = asyncHandler(
 );
 const makePurchase = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
+
     const userId = req.user?._id;
 
     if (!userId) {
