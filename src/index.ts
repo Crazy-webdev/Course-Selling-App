@@ -5,6 +5,7 @@ import userRouter from './routes/user.routes';
 import courseRouter from './routes/course.routes';
 import adminRouter from './routes/admin.routes';
 import connectDb from './config/db';
+import { errorHandler } from './utils/error-handler';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 const app = express();
@@ -20,3 +21,4 @@ app.use('/api/v1/admin', adminRouter);
 app.listen(port, () => {
   console.log(`Listening to port ${port}`);
 });
+app.use(errorHandler);

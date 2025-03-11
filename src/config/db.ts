@@ -1,14 +1,7 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import path from 'path';
-import fs from 'fs';
+import { envPath } from '../utils/envPath';
 
-const envPath = path.resolve(__dirname, '../../.env');
-if (fs.existsSync(envPath)) {
-  dotenv.config({ path: envPath });
-} else {
-  console.warn('.env file not found, using environment variables');
-}
+envPath();
 
 const connectDb = async (): Promise<void> => {
   const connectionString = process.env.DB_URL;
